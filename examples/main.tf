@@ -1,10 +1,15 @@
+provider "aws" {
+  region = "eu-west-1"
+}
+
 locals {
   name        = "boldlink-test-group-${uuid()}"
   group_users = ["testuser1"]
 }
 
 module "boldlink_group" {
-  source                    = "./.."
+  source                    = "boldlink/iam-group/aws"
+  version                   = "1.0.0"
   iam_group_name            = local.name
   iam_group_membership_name = local.name
   group_users               = local.group_users
