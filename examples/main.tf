@@ -1,3 +1,7 @@
+provider "aws" {
+  region = "eu-west-1"
+}
+
 locals {
   name        = "boldlink-test-group-${uuid()}"
   group_users = ["testuser1"]
