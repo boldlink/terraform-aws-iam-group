@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 locals {
-  name        = "boldlink-test-group}"
+  name        = "boldlink-test-group"
   group_users = ["testuser1"]
 }
 
