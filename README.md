@@ -1,3 +1,7 @@
+[![Build Status](https://github.com/boldlink/terraform-aws-iam-group/actions/workflows/pre-commit.yml/badge.svg)](https://github.com/boldlink/terraform-aws-iam-group/actions)
+
+[<img src="https://avatars.githubusercontent.com/u/25388280?s=200&v=4" width="96"/>](https://boldlink.io)
+
 # AWS IAM Group Terraform module
 
 ## Description
@@ -5,23 +9,66 @@ This module creates an AWS IAM Group with group policy defining the permissions 
 
 Example available [here](https://github.com/boldlink/terraform-aws-iam-group/tree/main/examples)
 
+## Usage
+*NOTE*: These examples use the latest version of this module
+
+```console
+locals {
+  name        = "boldlink-minimum-example"
+}
+
+module "iam_user" {
+  source                  = "boldlink/iam-user/aws"
+  name                    = "${local.name}-user"
+  force_destroy           = true
+  user_policy             = data.aws_iam_policy_document.default.json
+  password_length         = 8
+  password_reset_required = true
+
+  tags = {
+    Name        = local.name
+    Environment = "dev"
+  }
+}
+
+module "minimum_group" {
+  source                    = "../../"
+  iam_group_name            = local.name
+  group_users               = [module.iam_user.user_name]
+  iam_group_membership_name = local.name
+  group_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = [
+          "ec2:Describe*",
+        ]
+        Effect   = "Allow"
+        Resource = "*"
+      },
+    ]
+  })
+}
+```
 ## Documentation
 
 [AWS Identity and Access Management Documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)
 
 [Terraform provider documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group)
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14.11 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.15.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.4.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.21.0 |
 
 ## Modules
 
@@ -61,3 +108,25 @@ No modules.
 | <a name="output_iam_group_policy_name"></a> [iam\_group\_policy\_name](#output\_iam\_group\_policy\_name) | The name of the policy. |
 | <a name="output_iam_group_unique_id"></a> [iam\_group\_unique\_id](#output\_iam\_group\_unique\_id) | The unique ID assigned by AWS. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+## Third party software
+This repository uses third party software:
+* [pre-commit](https://pre-commit.com/) - Used to help ensure code and documentation consistency
+  * Install with `brew install pre-commit`
+  * Manually use with `pre-commit run`
+* [terraform 0.14.11](https://releases.hashicorp.com/terraform/0.14.11/) For backwards compatibility we are using version 0.14.11 for testing making this the min version tested and without issues with terraform-docs.
+* [terraform-docs](https://github.com/segmentio/terraform-docs) - Used to generate the [Inputs](#Inputs) and [Outputs](#Outputs) sections
+  * Install with `brew install terraform-docs`
+  * Manually use via pre-commit
+* [tflint](https://github.com/terraform-linters/tflint) - Used to lint the Terraform code
+  * Install with `brew install tflint`
+  * Manually use via pre-commit
+
+### Makefile
+The makefile contained in this repo is optimized for linux paths and the main purpose is to execute testing for now.
+* Create all tests:
+`$ make tests`
+* Clean all tests:
+`$ make clean`
+
+#### BOLDLink-SIG 2022
