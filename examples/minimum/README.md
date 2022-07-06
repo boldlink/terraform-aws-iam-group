@@ -14,22 +14,17 @@
 
 ## Providers
 
-| Name | Version |
-|------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.21.0 |
+No providers.
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_iam_user"></a> [iam\_user](#module\_iam\_user) | boldlink/iam-user/aws | n/a |
 | <a name="module_minimum_group"></a> [minimum\_group](#module\_minimum\_group) | ../../ | n/a |
 
 ## Resources
 
-| Name | Type |
-|------|------|
-| [aws_iam_policy_document.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+No resources.
 
 ## Inputs
 

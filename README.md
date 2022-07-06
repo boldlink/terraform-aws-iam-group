@@ -13,41 +13,9 @@ Example available [here](https://github.com/boldlink/terraform-aws-iam-group/tre
 *NOTE*: These examples use the latest version of this module
 
 ```console
-locals {
-  name        = "boldlink-minimum-example"
-}
-
-module "iam_user" {
-  source                  = "boldlink/iam-user/aws"
-  name                    = "${local.name}-user"
-  force_destroy           = true
-  user_policy             = data.aws_iam_policy_document.default.json
-  password_length         = 8
-  password_reset_required = true
-
-  tags = {
-    Name        = local.name
-    Environment = "dev"
-  }
-}
-
 module "minimum_group" {
-  source                    = "../../"
-  iam_group_name            = local.name
-  group_users               = [module.iam_user.user_name]
-  iam_group_membership_name = local.name
-  group_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = [
-          "ec2:Describe*",
-        ]
-        Effect   = "Allow"
-        Resource = "*"
-      },
-    ]
-  })
+  source         = "../../"
+  iam_group_name = "boldlink-minimum-example-group"
 }
 ```
 ## Documentation
@@ -86,13 +54,13 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_group_policy"></a> [group\_policy](#input\_group\_policy) | (Required) The policy document. This is a JSON formatted string. | `string` | n/a | yes |
-| <a name="input_group_policy_name_prefix"></a> [group\_policy\_name\_prefix](#input\_group\_policy\_name\_prefix) | (Optional) Creates a unique name beginning with the specified prefix. Conflicts with `name`. | `string` | `null` | no |
-| <a name="input_group_users"></a> [group\_users](#input\_group\_users) | (Required) A list of IAM User names to associate with the Group | `list(string)` | n/a | yes |
-| <a name="input_iam_group_membership_name"></a> [iam\_group\_membership\_name](#input\_iam\_group\_membership\_name) | (Required) The name to identify the Group Membership | `string` | n/a | yes |
+| <a name="input_group_policy"></a> [group\_policy](#input\_group\_policy) | (Required) The policy document. This is a JSON formatted string. | `string` | `null` | no |
+| <a name="input_group_users"></a> [group\_users](#input\_group\_users) | (Required) A list of IAM User names to associate with the Group | `list(string)` | `[]` | no |
 | <a name="input_iam_group_name"></a> [iam\_group\_name](#input\_iam\_group\_name) | (Required) The group's name. The name must consist of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: `=,.@-_.`. Group names are not distinguished by case. For example, you cannot create groups named both `ADMINS` and `admins`. | `string` | n/a | yes |
 | <a name="input_iam_group_path"></a> [iam\_group\_path](#input\_iam\_group\_path) | (Optional, default `/`) Path in which to create the group. | `string` | `"/"` | no |
-| <a name="input_iam_group_policy_name"></a> [iam\_group\_policy\_name](#input\_iam\_group\_policy\_name) | (Optional) The name of the policy. If omitted, Terraform will assign a random, unique name. | `string` | `null` | no |
+| <a name="input_membership_name"></a> [membership\_name](#input\_membership\_name) | (Required) The name to identify the Group Membership | `string` | `null` | no |
+| <a name="input_policy_name"></a> [policy\_name](#input\_policy\_name) | (Optional) The name of the policy. If omitted, Terraform will assign a random, unique name. | `string` | `null` | no |
+| <a name="input_policy_name_prefix"></a> [policy\_name\_prefix](#input\_policy\_name\_prefix) | (Optional) Creates a unique name beginning with the specified prefix. Conflicts with `name`. | `string` | `null` | no |
 
 ## Outputs
 

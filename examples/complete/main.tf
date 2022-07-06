@@ -17,11 +17,11 @@ module "iam_user" {
 }
 
 module "iam_group" {
-  source                    = "../../"
-  iam_group_name            = local.name
-  group_users               = [module.iam_user.user_name]
-  iam_group_membership_name = local.name
-  iam_group_policy_name     = local.name
+  source          = "../../"
+  iam_group_name  = local.name
+  group_users     = [module.iam_user.user_name]
+  membership_name = local.name
+  policy_name     = local.name
   group_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [

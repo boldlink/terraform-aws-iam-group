@@ -4,14 +4,16 @@ resource "aws_iam_group" "main" {
 }
 
 resource "aws_iam_group_membership" "main" {
-  name  = var.iam_group_membership_name
+  count = var.group_users != [] && var.membership_name != null ? 1 : 0
+  name  = var.membership_name
   users = var.group_users
   group = aws_iam_group.main.name
 }
 
 resource "aws_iam_group_policy" "main" {
-  name        = var.iam_group_policy_name
+  count       = var.group_policy != null ? 1 : 0
+  name        = var.policy_name
   group       = aws_iam_group.main.name
   policy      = var.group_policy
-  name_prefix = var.group_policy_name_prefix
+  name_prefix = var.policy_name_prefix
 }

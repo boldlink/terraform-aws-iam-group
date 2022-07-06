@@ -9,17 +9,19 @@ variable "iam_group_path" {
   default     = "/"
 }
 
-variable "iam_group_membership_name" {
+variable "membership_name" {
   type        = string
   description = "(Required) The name to identify the Group Membership"
+  default     = null
 }
 
 variable "group_users" {
   type        = list(string)
   description = "(Required) A list of IAM User names to associate with the Group"
+  default     = []
 }
 
-variable "iam_group_policy_name" {
+variable "policy_name" {
   type        = string
   description = "(Optional) The name of the policy. If omitted, Terraform will assign a random, unique name."
   default     = null
@@ -28,9 +30,10 @@ variable "iam_group_policy_name" {
 variable "group_policy" {
   type        = string
   description = "(Required) The policy document. This is a JSON formatted string."
+  default     = null
 }
 
-variable "group_policy_name_prefix" {
+variable "policy_name_prefix" {
   type        = string
   description = "(Optional) Creates a unique name beginning with the specified prefix. Conflicts with `name`."
   default     = null
