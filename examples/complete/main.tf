@@ -18,7 +18,7 @@ module "iam_user" {
 
 module "iam_group" {
   source          = "../../"
-  iam_group_name  = local.name
+  group_name      = local.name
   group_users     = [module.iam_user.user_name]
   membership_name = local.name
   policy_name     = local.name

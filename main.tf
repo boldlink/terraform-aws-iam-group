@@ -1,6 +1,6 @@
 resource "aws_iam_group" "main" {
-  name = var.iam_group_name
-  path = var.iam_group_path
+  name = var.group_name
+  path = var.group_path
 }
 
 resource "aws_iam_group_membership" "main" {

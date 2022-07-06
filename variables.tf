@@ -1,9 +1,9 @@
-variable "iam_group_name" {
+variable "group_name" {
   type        = string
   description = "(Required) The group's name. The name must consist of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: `=,.@-_.`. Group names are not distinguished by case. For example, you cannot create groups named both `ADMINS` and `admins`."
 }
 
-variable "iam_group_path" {
+variable "group_path" {
   type        = string
   description = "(Optional, default `/`) Path in which to create the group."
   default     = "/"
