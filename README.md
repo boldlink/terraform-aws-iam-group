@@ -11,6 +11,7 @@ Example available [here](https://github.com/boldlink/terraform-aws-iam-group/tre
 
 ## Usage
 *NOTE*: These examples use the latest version of this module
+- The following checkov checks have been skipped to allow creation of groups with no users:- `CKV2_AWS_21` and `CKV2_AWS_14`
 
 ```console
 module "minimum_group" {
@@ -36,7 +37,7 @@ module "minimum_group" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.21.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.22.0 |
 
 ## Modules
 
