@@ -1,3 +1,7 @@
+data "aws_iam_policy" "billing" {
+  arn = "arn:aws:iam::aws:policy/job-function/Billing"
+}
+
 data "aws_iam_policy_document" "default" {
 
   statement {

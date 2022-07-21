@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 - feat: constraints in iam policy
 
+## [1.0.4] - 2022-07-21
+### Changes
+- feat: Introduced feature for adding AWS Managed Policy ARNs
+
 ## [1.0.3] - 2022-06-30
 ### Changes
 - Added the `.github/workflow` folder (not supposed to run gitcommit)
@@ -38,3 +42,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [1.0.1]: https://github.com/boldlink/terraform-aws-iam-group/releases/tag/1.0.1
 [1.0.2]: https://github.com/boldlink/terraform-aws-iam-group/releases/tag/1.0.2
 [1.0.3]: https://github.com/boldlink/terraform-aws-iam-group/releases/tag/1.0.3
+[1.0.4]: https://github.com/boldlink/terraform-aws-iam-group/releases/tag/1.0.4
