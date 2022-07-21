@@ -38,3 +38,9 @@ variable "policy_name_prefix" {
   description = "(Optional) Creates a unique name beginning with the specified prefix. Conflicts with `name`."
   default     = null
 }
+
+variable "managed_policy_arns" {
+  type        = list(string)
+  description = "(Optional) Set of exclusive AWS IAM managed policy ARNs to attach to the IAM UserGroup."
+  default     = []
+}

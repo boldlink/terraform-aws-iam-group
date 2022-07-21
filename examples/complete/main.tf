@@ -22,6 +22,9 @@ module "iam_group" {
   group_users     = [module.iam_user.user_name]
   membership_name = local.name
   policy_name     = local.name
+  managed_policy_arns = [
+    data.aws_iam_policy.billing.arn
+  ]
   group_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [

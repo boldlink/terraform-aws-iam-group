@@ -50,6 +50,7 @@ No modules.
 | [aws_iam_group.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group) | resource |
 | [aws_iam_group_membership.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_membership) | resource |
 | [aws_iam_group_policy.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy) | resource |
+| [aws_iam_group_policy_attachment.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy_attachment) | resource |
 
 ## Inputs
 
@@ -59,6 +60,7 @@ No modules.
 | <a name="input_group_path"></a> [group\_path](#input\_group\_path) | (Optional, default `/`) Path in which to create the group. | `string` | `"/"` | no |
 | <a name="input_group_policy"></a> [group\_policy](#input\_group\_policy) | (Required) The policy document. This is a JSON formatted string. | `string` | `null` | no |
 | <a name="input_group_users"></a> [group\_users](#input\_group\_users) | (Required) A list of IAM User names to associate with the Group | `list(string)` | `[]` | no |
+| <a name="input_managed_policy_arns"></a> [managed\_policy\_arns](#input\_managed\_policy\_arns) | (Optional) Set of exclusive AWS IAM managed policy ARNs to attach to the IAM UserGroup. | `list(string)` | `[]` | no |
 | <a name="input_membership_name"></a> [membership\_name](#input\_membership\_name) | (Required) The name to identify the Group Membership | `string` | `null` | no |
 | <a name="input_policy_name"></a> [policy\_name](#input\_policy\_name) | (Optional) The name of the policy. If omitted, Terraform will assign a random, unique name. | `string` | `null` | no |
 | <a name="input_policy_name_prefix"></a> [policy\_name\_prefix](#input\_policy\_name\_prefix) | (Optional) Creates a unique name beginning with the specified prefix. Conflicts with `name`. | `string` | `null` | no |

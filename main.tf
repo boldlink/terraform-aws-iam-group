@@ -17,3 +17,10 @@ resource "aws_iam_group_policy" "main" {
   policy      = var.group_policy
   name_prefix = var.policy_name_prefix
 }
+
+### Purposely added to attach AWS Managed Policy ARNs to created group
+resource "aws_iam_group_policy_attachment" "main" {
+  count      = length(var.managed_policy_arns)
+  group      = aws_iam_group.main.name
+  policy_arn = var.managed_policy_arns[count.index]
+}
