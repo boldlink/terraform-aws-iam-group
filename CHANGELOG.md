@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 - feat: constraints in iam policy
+- fix: CKV_AWS_355 "Ensure no IAM policies documents allow "*" as a statement's resource for restrictable actions"
+- fix: CKV2_AWS_21 #Ensure that all IAM users are members of at least one IAM group
+- fix: CKV2_AWS_14 #Ensure that IAM groups includes at least one IAM user
+
+## [1.0.5] - 2022-08-16
+- fix: added CKV_TF_1 exception in main example.
 
 ## [1.0.4] - 2022-07-21
 ### Changes
