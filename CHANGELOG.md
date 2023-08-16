@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - fix: CKV2_AWS_14 #Ensure that IAM groups includes at least one IAM user
 
 ## [1.0.5] - 2022-08-16
-- fix: added CKV_TF_1 exception in main example.
+- fix: added CKV_TF_1 exception in complete example.
 
 ## [1.0.4] - 2022-07-21
 ### Changes
