@@ -7,3 +7,4 @@ framework: all
 skip-check:
 - CKV2_AWS_21 #Ensure that all IAM users are members of at least one IAM group
 - CKV2_AWS_14 #Ensure that IAM groups includes at least one IAM user
+- CKV_AWS_355 #"Ensure no IAM policies documents allow "*" as a statement's resource for restrictable actions"

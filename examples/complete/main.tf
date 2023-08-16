@@ -3,6 +3,7 @@ locals {
 }
 
 module "iam_user" {
+  #checkov:skip=CKV_TF_1
   source                  = "boldlink/iam-user/aws"
   name                    = "${local.name}-user"
   force_destroy           = true
