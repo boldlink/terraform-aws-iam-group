@@ -11,7 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - fix: CKV2_AWS_14 #Ensure that IAM groups includes at least one IAM user
 
 ## [1.1.0] - 2024-07-18
-- fix: added CKV_TF_1 exception in complete example.
+- feat: adding the code to support multiple iam group policies attachement.
+- feat: remove the iam group policy name prefix.
 
 ## [1.0.5] - 2022-08-16
 - fix: added CKV_TF_1 exception in complete example.
