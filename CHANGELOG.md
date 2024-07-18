@@ -10,6 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - fix: CKV2_AWS_21 #Ensure that all IAM users are members of at least one IAM group
 - fix: CKV2_AWS_14 #Ensure that IAM groups includes at least one IAM user
 
+## [1.1.0] - 2024-07-18
+- feat: adding the code to support multiple iam group policies attachement.
+- feat: remove the iam group policy name prefix.
+
 ## [1.0.5] - 2022-08-16
 - fix: added CKV_TF_1 exception in complete example.
 
@@ -42,8 +46,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial commit
 - Cleaned unnecessary files
 
-[Unreleased]: https://github.com/boldlink/terraform-aws-iam-group/compare/1.0.5...HEAD
-
+[Unreleased]: https://github.com/boldlink/terraform-aws-iam-group/compare/1.1.0...HEAD
+[1.0.0]: https://github.com/boldlink/terraform-aws-iam-group/releases/tag/1.0.5
 [1.0.0]: https://github.com/boldlink/terraform-aws-iam-group/releases/tag/1.0.0
 [1.0.1]: https://github.com/boldlink/terraform-aws-iam-group/releases/tag/1.0.1
 [1.0.2]: https://github.com/boldlink/terraform-aws-iam-group/releases/tag/1.0.2

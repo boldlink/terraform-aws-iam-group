@@ -11,11 +11,10 @@ resource "aws_iam_group_membership" "main" {
 }
 
 resource "aws_iam_group_policy" "main" {
-  count       = var.group_policy != null ? 1 : 0
-  name        = var.policy_name
-  group       = aws_iam_group.main.name
-  policy      = var.group_policy
-  name_prefix = var.policy_name_prefix
+  for_each = var.group_policies != {} ? var.group_policies : {}
+  name     = each.key
+  group    = aws_iam_group.main.name
+  policy   = each.value
 }
 
 ### Purposely added to attach AWS Managed Policy ARNs to created group

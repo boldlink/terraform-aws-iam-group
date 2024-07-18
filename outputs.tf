@@ -23,14 +23,18 @@ output "iam_group_unique_id" {
   description = "The unique ID assigned by AWS."
 }
 
-output "iam_group_policy_name" {
-  value       = aws_iam_group_policy.main.*.name
-  description = "The name of the policy."
+output "group_policy_ids" {
+  description = "Map of group policy IDs"
+  value = {
+    for k, v in aws_iam_group_policy.main : k => v.id
+  }
 }
 
-output "iam_group_policy" {
-  value       = aws_iam_group_policy.main.*.policy
-  description = "The policy document attached to the group."
+output "group_policy_names" {
+  description = "Map of group policy names"
+  value = {
+    for k, v in aws_iam_group_policy.main : k => v.name
+  }
 }
 
 output "group_membership_name" {

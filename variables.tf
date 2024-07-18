@@ -21,22 +21,10 @@ variable "group_users" {
   default     = []
 }
 
-variable "policy_name" {
-  type        = string
-  description = "(Optional) The name of the policy. If omitted, Terraform will assign a random, unique name."
-  default     = null
-}
-
-variable "group_policy" {
-  type        = string
-  description = "(Required) The policy document. This is a JSON formatted string."
-  default     = null
-}
-
-variable "policy_name_prefix" {
-  type        = string
-  description = "(Optional) Creates a unique name beginning with the specified prefix. Conflicts with `name`."
-  default     = null
+variable "group_policies" {
+  type        = map(string)
+  description = "(Required) The policy name and document, ex name = data.aws_iam_policy_document.example.json This is a JSON formatted string."
+  default     = {}
 }
 
 variable "managed_policy_arns" {
