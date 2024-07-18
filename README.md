@@ -24,10 +24,19 @@ Example available [here](https://github.com/boldlink/terraform-aws-iam-group/tre
 
 ```console
 module "minimum_group" {
-  source         = "../../"
-  iam_group_name = "boldlink-minimum-example-group"
+  source         = "boldlink/aws/iam-group"
+  version        = "*.*.*" -> It's always recommend the latest version for new deployments
+  iam_group_name = "example-group"
 }
 ```
+**NOTE:** the above example creates a group without users or policies. This is recommended for demo/test use only, typically the example code we provide is more directed at module testing not production use, see the [./examples/](examples) folder for more.
+
+
+## Major/Breaking changes:
+
+* 1.1.0 - We have deprecated the name_prefix for our policies, these are group (inline) policies associated with the group only.
+* 1.1.0 - You can know add multiple policies to a single user group allowing for a higher level of fine grained permissions assignment.
+
 ## Documentation
 
 [AWS Identity and Access Management Documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)

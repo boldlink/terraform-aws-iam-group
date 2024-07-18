@@ -27,10 +27,10 @@ variable "policy_name" {
   default     = null
 }
 
-variable "group_policy" {
-  type        = string
-  description = "(Required) The policy document. This is a JSON formatted string."
-  default     = null
+variable "group_policies" {
+  type        = map(string)
+  description = "(Required) The policy name and document, ex name = data.aws_iam_policy_document.example.json This is a JSON formatted string."
+  default     = {}
 }
 
 variable "policy_name_prefix" {

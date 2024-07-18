@@ -22,20 +22,22 @@ module "iam_group" {
   group_name      = local.name
   group_users     = [module.iam_user.user_name]
   membership_name = local.name
-  policy_name     = local.name
+  group_policies        = {
+    self_manage_user = data.aws_iam_policy_document.default.json
+    ec2_list         = jsonencode({
+      Version = "2012-10-17"
+      Statement = [
+        {
+          Action = [
+            "ec2:Describe*",
+          ]
+          Effect   = "Allow"
+          Resource = "*"
+        },
+      ]
+    })
+  }
   managed_policy_arns = [
     data.aws_iam_policy.billing.arn
   ]
-  group_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = [
-          "ec2:Describe*",
-        ]
-        Effect   = "Allow"
-        Resource = "*"
-      },
-    ]
-  })
 }
