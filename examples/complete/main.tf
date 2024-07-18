@@ -22,9 +22,9 @@ module "iam_group" {
   group_name      = local.name
   group_users     = [module.iam_user.user_name]
   membership_name = local.name
-  group_policies        = {
+  group_policies = {
     self_manage_user = data.aws_iam_policy_document.default.json
-    ec2_list         = jsonencode({
+    ec2_list = jsonencode({
       Version = "2012-10-17"
       Statement = [
         {
